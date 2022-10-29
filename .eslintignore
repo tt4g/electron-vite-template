@@ -1,0 +1,13 @@
+node_modules
+bower_components
+
+/dist
+/dist-electron
+/release-electron
+
+# Coverage
+/coverage
+
+# Visual Studio Code
+/.history
+/.vscode

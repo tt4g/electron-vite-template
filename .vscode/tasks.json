@@ -1,0 +1,18 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "yarn run dev",
+      "command": "yarn",
+      "type": "shell",
+      "args": [
+        "run",
+        "dev"
+      ],
+      "presentation": {
+        "reveal": "always"
+      },
+      "group": "build"
+    }
+  ]
+}

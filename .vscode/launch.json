@@ -1,0 +1,46 @@
+{
+    "version": "0.2.0",
+    "compounds": [
+      {
+        "name": "Debug Electron",
+        "configurations": [
+          "Electron: Main",
+          "Electron: Renderer"
+        ],
+        "presentation": {
+          "hidden": false,
+          "group": "",
+          "order": 1
+        },
+        "preLaunchTask": "yarn run dev",
+        "stopAll": true
+      }
+    ],
+    "configurations": [
+      {
+        "name": "Electron: Main",
+        "type": "node",
+        "request": "launch",
+        "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/electron",
+        "windows": {
+          "name": "Launch",
+          "type": "node",
+          "request": "launch",
+          "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/electron.cmd"
+        },
+        "runtimeArgs": [
+          "--no-sandbox",
+          "--remote-debugging-port=9229",
+          "."
+        ],
+        "console": "integratedTerminal"
+      },
+      {
+        "name": "Electron: Renderer",
+        "type": "chrome",
+        "request": "attach",
+        "port": 9223,
+        "timeout": 30000,
+      }
+    ],
+}
