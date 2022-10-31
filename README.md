@@ -2,6 +2,12 @@ Template Project: Vite + Electron + Typescript + React
 
 Editor: Visual Studio Code
 
+> **NOTE**
+> 
+> Unfortunately, sometimes the sourcemap is not generated correctly.
+> This appears to be [a bug in Vite](https://github.com/vitejs/vite/issues/5916).
+> The debugger in Viausl Studio Code also does not work because of this bug.
+
 ## Setup
 
 ```shell

@@ -1,3 +1,6 @@
+// Enable sourcemap support.
+import "source-map-support/register";
+
 import electronIsDev from "electron-is-dev";
 import installExtension, {
   REACT_DEVELOPER_TOOLS,
