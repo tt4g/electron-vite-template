@@ -65,6 +65,11 @@ export default defineConfig((env) => {
           chunkFileNames: "[name].js",
           assetFileNames: "assets/[name].[ext]",
         },
+        external: [
+          // Bundled javascript sources are evaluated by the Electron process,
+          // so there is no need to bundle `electron` dependencies.
+          "electron",
+        ],
       },
     },
     server: {
