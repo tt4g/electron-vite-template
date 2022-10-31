@@ -17,7 +17,7 @@
     "electron:dev": "cross-env NODE_ENV=development electron",
     "electron:build": "electron-builder",
     "clean:vite": "rimraf ./dist ./dist-electron",
-    "clean:electron": "rimraf ./release-electron",
+    "clean:electron": "rimraf ./dist-release",
     "vitest:run": "vitest",
     "vitest:coverage": "vitest run --coverage",
     "format": "eslint --fix ./src ./electron && prettier --write ./src ./electron",

@@ -18,7 +18,7 @@ Dist files:
 
 - `dist`: Vite generated.
 - `dist-electron`: vite-plugin-electron generated.
-- `release-electron`: `electron-builder` generated (release it).
+- `dist-release`: `electron-builder` generated (release it).
 
 ## Development
 
