@@ -20,7 +20,7 @@ const createWindow = () => {
   });
 
   if (electronIsDev) {
-    mainWindow.webContents.openDevTools();
+    mainWindow.webContents.openDevTools({ mode: "detach" });
   }
 
   if (electronIsDev) {
