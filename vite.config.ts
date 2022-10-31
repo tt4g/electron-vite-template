@@ -3,7 +3,6 @@
 
 import path from "path";
 import { defineConfig } from "vite";
-import { defaultExclude } from "vitest/config";
 import react from "@vitejs/plugin-react";
 import checker from "vite-plugin-checker";
 import electron from "vite-plugin-electron";
