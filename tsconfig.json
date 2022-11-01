@@ -18,7 +18,7 @@
     "useDefineForClassFields": true,
     "allowSyntheticDefaultImports": true
   },
-  "include": ["src"],
+  "include": ["src", "electron/main", "electron/preload"],
   "exclude": [
     "node_modules",
     "src/**/__tests__",
