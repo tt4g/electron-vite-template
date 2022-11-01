@@ -34,7 +34,7 @@ const electronPlugin = () => {
       plugins: [checkerPlugin()],
       define: defineElement(),
       build: {
-        outDir: "dist-electron",
+        outDir: "dist/electron",
       },
     },
   });
@@ -67,7 +67,7 @@ export default defineConfig((env) => {
     ],
     define: defineElement(),
     build: {
-      outDir: "dist",
+      outDir: "dist/src",
       minify: minifyEnabled,
       rollupOptions: {
         input: {

@@ -4,11 +4,11 @@ productName: "electron-vite-template"
 copyright: "Author tt4g"
 asar: true
 directories:
-  output: "dist-release/${version}"
+  output: "dist/release/${version}"
   buildResources: "electron/resources"
 files:
-  - "dist"
-  - "dist-electron"
+  - "dist/src"
+  - "dist/electron"
 win:
   target:
     - target: "nsis"

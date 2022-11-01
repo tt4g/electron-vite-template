@@ -30,7 +30,9 @@ const createWindow = () => {
     // Vite dev server.
     mainWindow.loadURL("http://localhost:5173");
   } else {
-    mainWindow.loadFile(path.join(__dirname, "..", "dist", "index.html"));
+    mainWindow.loadFile(
+      path.join(__dirname, "..", "..", "dist", "src", "index.html")
+    );
   }
 };
 

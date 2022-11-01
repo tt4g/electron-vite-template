@@ -22,9 +22,10 @@ $ yarn run build
 
 Dist files:
 
-- `dist`: Vite generated.
-- `dist-electron`: vite-plugin-electron generated.
-- `dist-release`: `electron-builder` generated (release it).
+- `dist/src`: Vite generated (Electron renderer process entry point).
+- `dist/electron`: vite-plugin-electron (via Vite) generated
+                   (Electron main process entry point and preload script).
+- `dist/release`: `electron-builder` generated (release it).
 
 ## Development
 
