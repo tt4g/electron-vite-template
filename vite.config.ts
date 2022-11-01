@@ -8,11 +8,35 @@ import checker from "vite-plugin-checker";
 import electron from "vite-plugin-electron";
 import sassDts from "vite-plugin-sass-dts";
 
+const checkerPlugin = () =>
+  checker({
+    typescript: true,
+  });
+
+const electronPlugin = () => {
+  // vite-plugin-electron: output Electron main and preload script.
+  return electron({
+    entry: {
+      // Electron main.
+      electronMain: path.join(__dirname, "electron", "main", "index.ts"),
+      // Electron preload.
+      electronPreload: path.join(__dirname, "electron", "preload", "index.ts"),
+    },
+    vite: {
+      plugins: [checkerPlugin()],
+      build: {
+        outDir: "dist-electron",
+      },
+    },
+  });
+};
+
 // https://vitejs.dev/config/
 export default defineConfig((env) => {
   const minifyEnabled = env.command === "build";
 
   return {
+    root: __dirname,
     base: "./",
     resolve: {
       alias: {
@@ -25,32 +49,12 @@ export default defineConfig((env) => {
     },
     plugins: [
       react(),
-      checker({
-        typescript: true,
-      }),
+      checkerPlugin(),
       // vite-plugin-sass-dts: Generate CSS Modules type definition for TypeScript.
       sassDts({
         enabledMode: ["development", "production"],
       }),
-      // vite-plugin-electron: output Electron main and preload script.
-      electron({
-        entry: {
-          // Electron main.
-          electronMain: path.join(__dirname, "electron", "main", "index.ts"),
-          // Electron preload.
-          electronPreload: path.join(
-            __dirname,
-            "electron",
-            "preload",
-            "index.ts"
-          ),
-        },
-        vite: {
-          build: {
-            outDir: "dist-electron",
-          },
-        },
-      }),
+      electronPlugin(),
     ],
     build: {
       outDir: "dist",
