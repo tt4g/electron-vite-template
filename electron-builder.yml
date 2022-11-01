@@ -4,11 +4,16 @@ productName: "electron-vite-template"
 copyright: "Author tt4g"
 asar: true
 directories:
-  output: "dist/release/${version}"
-  buildResources: "electron/resources"
+  output: "./dist/release/${version}"
+  buildResources: "./electron/resources/"
 files:
-  - "dist/src"
-  - "dist/electron"
+    # Electron requires `package.json` in asar root directory.
+  - "./package.json"
+    # Rename `./dist/src` to `./dist/renderer`
+  - from: "./dist/src"
+    to: "./dist/renderer"
+  - from: "./dist/electron"
+    to: "./dist/electron"
 win:
   target:
     - target: "nsis"

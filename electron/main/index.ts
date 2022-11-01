@@ -31,7 +31,7 @@ const createWindow = () => {
     mainWindow.loadURL("http://localhost:5173");
   } else {
     mainWindow.loadFile(
-      path.join(__dirname, "..", "..", "dist", "src", "index.html")
+      path.join(__dirname, "..", "..", "dist", "renderer", "index.html")
     );
   }
 };
