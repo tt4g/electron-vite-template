@@ -10,8 +10,8 @@ export const App: FC = () => {
   return (
     <main>
       <p className={styles.versions}>
-        This app is using "Chrome {versions.chrome()}", "Node.js{" "}
-        {versions.node()}", and "Electron {versions.electron()}".
+        This app is using "Chrome {appVersions.chrome()}", "Node.js{" "}
+        {appVersions.node()}", and "Electron {appVersions.electron()}".
       </p>
       <div>
         <p className={styles["count-info"]}>Count is: {count}</p>
