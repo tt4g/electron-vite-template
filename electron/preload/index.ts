@@ -1,4 +1,4 @@
-import { contextBridge, ipcRenderer } from "electron";
+import { contextBridge } from "electron";
 
 contextBridge.exposeInMainWorld("versions", {
   node: () => process.versions.node,
