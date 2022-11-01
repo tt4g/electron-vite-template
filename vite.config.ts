@@ -3,10 +3,18 @@
 
 import path from "path";
 import { defineConfig } from "vite";
+import type { UserConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import checker from "vite-plugin-checker";
 import electron from "vite-plugin-electron";
 import sassDts from "vite-plugin-sass-dts";
+import packageJson from "./package.json";
+
+const defineElement = (): UserConfig["define"] => {
+  return {
+    __APP_VERSION__: JSON.stringify(packageJson.version),
+  };
+};
 
 const checkerPlugin = () =>
   checker({
@@ -24,6 +32,7 @@ const electronPlugin = () => {
     },
     vite: {
       plugins: [checkerPlugin()],
+      define: defineElement(),
       build: {
         outDir: "dist-electron",
       },
@@ -56,6 +65,7 @@ export default defineConfig((env) => {
       }),
       electronPlugin(),
     ],
+    define: defineElement(),
     build: {
       outDir: "dist",
       minify: minifyEnabled,

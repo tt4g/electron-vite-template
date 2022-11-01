@@ -1,17 +1,35 @@
-.versions {
-  text-align: center;
+.AppVersions {
+  &__section {
+    margin: 0 0 10px 0;
+  }
+
+  &__container {
+    margin: 0;
+    padding: 2px 0;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 0 2px;
+
+    &__element {
+      margin: 0 2px;
+    }
+  }
 }
 
-.count-info {
-  font-size: 1.2em;
-  margin: 0;
-}
+.Count {
+  &__info {
+    font-size: 1.2em;
+    margin: 0;
+  }
 
-.count-up-button {
-  display: inline-block;
-  margin: 0 5px;
-}
+  &__up-button {
+    display: inline-block;
+    margin: 0 5px;
+  }
 
-.count-down-button {
-  display: inline-block;
+  &__down-button {
+    display: inline-block;
+  }
+
 }
