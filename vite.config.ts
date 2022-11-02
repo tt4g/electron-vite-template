@@ -90,8 +90,16 @@ export default defineConfig((env) => {
       host: "localhost",
       port: 5173,
     },
+    // https://vitest.dev/config/
     test: {
-      environment: "node",
+      // To use some Jest custom matchers with Vitest, we need to be able to
+      // call `expect.extend()` globally.
+      globals: true,
+      // `happy-dom` is compatible with `jsdom`, so you can use
+      // `@testing-library/jest-dom` and `@testing-library/react`.
+      environment: "happy-dom",
+      restoreMocks: true,
+      setupFiles: path.join(__dirname, "src", "tests", "setup.ts"),
     },
   };
 });
