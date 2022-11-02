@@ -1,0 +1,12 @@
+{
+    "recommendations": [
+        "editorconfig.editorconfig",
+        "shardulm94.trailing-spaces",
+        "mosapride.zenkaku",
+        "ionutvmi.path-autocomplete",
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "formulahendry.auto-rename-tag",
+        "vincaslt.highlight-matching-tag"
+    ]
+}
