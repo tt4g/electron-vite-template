@@ -5,7 +5,7 @@
     "module": "ESNext",
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "paths": {
-      "@/*": ["src/*"]
+      "@/src/*": ["src/*"]
     },
     "noEmit": true,
     "esModuleInterop": true,

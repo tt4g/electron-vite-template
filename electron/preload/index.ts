@@ -1,6 +1,6 @@
 import { contextBridge } from "electron";
 
-import type { AppVersions } from "@/types/electron-preload/versions";
+import type { AppVersions } from "@/src/types/electron-preload/versions";
 
 const appVersions: AppVersions = {
   app: () => __APP_VERSION__,

@@ -1,6 +1,6 @@
 import { memo } from "react";
 import type { FC } from "react";
-import { WithClassName } from "@/types/components";
+import { WithClassName } from "@/src/types/components";
 
 export type VersionProps = WithClassName<
   Readonly<{

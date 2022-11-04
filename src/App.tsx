@@ -2,7 +2,7 @@ import { memo, useCallback, useState } from "react";
 import type { FC } from "react";
 import { Version } from "./components/Elements/Version";
 
-import styles from "@/app.module.scss";
+import styles from "@/src/app.module.scss";
 
 export const App: FC = memo(() => {
   const [count, setCount] = useState(0);
