@@ -2,3 +2,5 @@
 // `electron/preload/`.
 
 declare const appVersions: import("./versions").AppVersions;
+
+declare const rendererLogger: import("./logging").RendererLogger;

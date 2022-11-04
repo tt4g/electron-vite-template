@@ -5,6 +5,8 @@
     "module": "ESNext",
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "paths": {
+      "@/electron/main/*": ["electron/main/*"],
+      "@/electron/preload/*": ["electron/preload/*"],
       "@/src/*": ["src/*"]
     },
     "noEmit": true,

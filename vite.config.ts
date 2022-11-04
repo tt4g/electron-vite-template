@@ -3,16 +3,22 @@
 
 import path from "path";
 import { defineConfig } from "vite";
-import type { UserConfig } from "vite";
+import type { AliasOptions, UserConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import checker from "vite-plugin-checker";
 import electron from "vite-plugin-electron";
 import sassDts from "vite-plugin-sass-dts";
 import packageJson from "./package.json";
 
-const defineElement = (): UserConfig["define"] => {
+const defineVariables = (): UserConfig["define"] => {
   return {
     __APP_VERSION__: JSON.stringify(packageJson.version),
+  };
+};
+
+const aliasVariables = (): AliasOptions => {
+  return {
+    "@/src/": path.posix.join(__dirname, "src/"),
   };
 };
 
@@ -32,7 +38,18 @@ const electronPlugin = () => {
     },
     vite: {
       plugins: [checkerPlugin()],
-      define: defineElement(),
+      define: defineVariables(),
+      resolve: {
+        alias: {
+          ...aliasVariables(),
+          "@/electron/main/": path.posix.join(__dirname, "electron", "main/"),
+          "@/electron/preload/": path.posix.join(
+            __dirname,
+            "electron",
+            "preload/"
+          ),
+        },
+      },
       build: {
         outDir: "dist/electron",
       },
@@ -48,9 +65,7 @@ export default defineConfig((env) => {
     root: __dirname,
     base: "./",
     resolve: {
-      alias: {
-        "@": path.join(__dirname, "src"),
-      },
+      alias: aliasVariables(),
       // Override `mainFields`.
       // NOTE: Since electron uses Node.js, packages exported as "browser" in
       //  `package.json` cannot be used.
@@ -65,7 +80,7 @@ export default defineConfig((env) => {
       }),
       electronPlugin(),
     ],
-    define: defineElement(),
+    define: defineVariables(),
     build: {
       outDir: "dist/src",
       minify: minifyEnabled,

@@ -1,17 +1,21 @@
 // Enable sourcemap support.
 import "source-map-support/register";
 
+import path from "path";
+
 import electronIsDev from "electron-is-dev";
 import installExtension, {
   REACT_DEVELOPER_TOOLS,
 } from "electron-devtools-installer";
-import { app, BrowserWindow } from "electron";
-import path from "path";
+import { app, BrowserWindow, ipcMain } from "electron";
+import { registerIpcMainCallback } from "@/electron/main/ipc";
 
 if (process.platform === "win32") {
   // Set application name for Windows 10+ notifications
   app.setAppUserModelId(app.getName());
 }
+
+registerIpcMainCallback(ipcMain);
 
 const createWindow = () => {
   const mainWindow = new BrowserWindow({

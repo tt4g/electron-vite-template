@@ -1,12 +1,4 @@
-import { contextBridge } from "electron";
+import { contextBridge, ipcRenderer } from "electron";
+import { exposeMainWorld } from "@/electron/preload/expose";
 
-import type { AppVersions } from "@/src/types/electron-preload/versions";
-
-const appVersions: AppVersions = {
-  app: () => __APP_VERSION__,
-  node: () => process.versions.node,
-  chrome: () => process.versions.chrome,
-  electron: () => process.versions.electron,
-};
-
-contextBridge.exposeInMainWorld("appVersions", appVersions);
+exposeMainWorld(contextBridge, ipcRenderer);

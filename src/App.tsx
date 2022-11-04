@@ -9,6 +9,8 @@ export const App: FC = memo(() => {
   const countUp = useCallback(() => setCount((count) => count + 1), []);
   const countDown = useCallback(() => setCount((count) => count - 1), []);
 
+  rendererLogger.info("<App /> mounted.", "count:", count);
+
   return (
     <main>
       <section className={styles["AppVersions__section"]}>
