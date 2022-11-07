@@ -55,8 +55,8 @@ const electronPlugin = () => {
       electronPreload: path.join(__dirname, "electron", "preload", "index.ts"),
     },
     vite: {
-      plugins: [checkerPlugin()],
-      define: defineVariables(),
+      root: __dirname,
+      base: "./",
       resolve: {
         alias: {
           ...aliasVariables(),
@@ -68,6 +68,8 @@ const electronPlugin = () => {
           ),
         },
       },
+      plugins: [checkerPlugin()],
+      define: defineVariables(),
       build: {
         outDir: "dist/electron",
         rollupOptions: {
