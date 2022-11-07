@@ -4,6 +4,7 @@
 import path from "path";
 import { defineConfig } from "vite";
 import type { AliasOptions, UserConfig } from "vite";
+import type { RollupOptions } from "rollup";
 import react from "@vitejs/plugin-react";
 import checker from "vite-plugin-checker";
 import electron from "vite-plugin-electron";
@@ -26,6 +27,23 @@ const checkerPlugin = () =>
   checker({
     typescript: true,
   });
+
+const rollupOutputOptions = (): RollupOptions["output"] => {
+  // NOTE: Here `rollupOptions.output.chunkFileNames` is specified, but the
+  //  chunk files cannot be loaded with `require()` and `import ... from` to
+  //  load chunk files.
+  //  Electron does not support loading other scripts packaged in Electron, even
+  //  with relative paths, unless the `file://` protocol is specified in
+  //  `require()`.
+  //  Typescript's `import type ... from` works because it is an `import` of
+  //  type information and will be removed from the transpiled script.
+  //  See: https://github.com/electron/electron/issues/2414
+  return {
+    entryFileNames: "[name].js",
+    chunkFileNames: "[name].js",
+    assetFileNames: "assets/[name].[ext]",
+  };
+};
 
 const electronPlugin = () => {
   // vite-plugin-electron: output Electron main and preload script.
@@ -52,6 +70,9 @@ const electronPlugin = () => {
       },
       build: {
         outDir: "dist/electron",
+        rollupOptions: {
+          output: rollupOutputOptions(),
+        },
       },
     },
   });
@@ -89,11 +110,7 @@ export default defineConfig((env) => {
           // Electron entry point.
           electronEntryPoint: path.join(__dirname, "index.html"),
         },
-        output: {
-          entryFileNames: "[name].js",
-          chunkFileNames: "[name].js",
-          assetFileNames: "assets/[name].[ext]",
-        },
+        output: rollupOutputOptions(),
         external: [
           // Bundled javascript sources are evaluated by the Electron process,
           // so there is no need to bundle `electron` dependencies.
