@@ -60,7 +60,8 @@
     "vite-plugin-checker": "^0.5.1",
     "vite-plugin-electron": "^0.10.2",
     "vite-plugin-sass-dts": "^1.1.44",
-    "vitest": "^0.24.3"
+    "vitest": "^0.24.3",
+    "vitest-mock-extended": "^1.0.7"
   },
   "dependencies": {
     "source-map-support": "^0.5.21"

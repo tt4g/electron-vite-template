@@ -1,6 +1,6 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import { mockedObject } from "./mock-utils";
-import type { MockObject } from "./mock-utils";
+import { mock, mockFn, any } from "vitest-mock-extended";
+import type { MockProxy } from "vitest-mock-extended";
 
 describe("mockedObject", () => {
   type Foo = {
@@ -10,9 +10,9 @@ describe("mockedObject", () => {
 
   const expectF = (f: Foo): string => f.foo("foo");
 
-  let mockFoo: MockObject<Foo>;
+  let mockFoo: MockProxy<Foo>;
   beforeEach(() => {
-    mockFoo = mockedObject<Foo>({
+    mockFoo = mock<Foo>({
       foo: vi.fn((name: string) => name.toUpperCase()),
     });
   });
