@@ -6,11 +6,4 @@ declare const classNames: {
   readonly "Count__up-button": "Count__up-button";
   readonly "Count__down-button": "Count__down-button";
 };
-export default classNames;
-export type ClassNames =
-  | "AppVersions__section"
-  | "AppVersions__container"
-  | "AppVersions__container__element"
-  | "Count__info"
-  | "Count__up-button"
-  | "Count__down-button";
+export = classNames;
